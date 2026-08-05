@@ -219,7 +219,7 @@ runs:
     shell: msys2 {0}
     working-directory: ${{ inputs.path }}/deps/src/dovi_tool
     if: ${{ runner.os == 'Windows' && runner.arch == 'ARM64' && inputs.dovi-hdr10plus != 'false' }}
-  - run: cd dolby_vision && RUSTFLAGS="-Ctarget-cpu=x86-64-v3 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(realpath ../../..)/install"
+  - run: cd dolby_vision && RUSTFLAGS="-Ctarget-cpu=x86-64-v2 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(realpath ../../..)/install"
     shell: bash
     working-directory: ${{ inputs.path }}/deps/src/dovi_tool
     if: ${{ runner.os == 'Linux' && runner.arch == 'X64' && inputs.dovi-hdr10plus != 'false' }}
@@ -250,7 +250,7 @@ runs:
     shell: msys2 {0}
     working-directory: ${{ inputs.path }}/deps/src/hdr10plus_tool
     if: ${{ runner.os == 'Windows' && runner.arch == 'ARM64' && inputs.dovi-hdr10plus != 'false' }}
-  - run: cd hdr10plus && RUSTFLAGS="-Ctarget-cpu=x86-64-v3 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(realpath ../../..)/install"
+  - run: cd hdr10plus && RUSTFLAGS="-Ctarget-cpu=x86-64-v2 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(realpath ../../..)/install"
     shell: bash
     working-directory: ${{ inputs.path }}/deps/src/hdr10plus_tool
     if: ${{ runner.os == 'Linux' && runner.arch == 'X64' && inputs.dovi-hdr10plus != 'false' }}
