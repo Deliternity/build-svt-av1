@@ -211,7 +211,7 @@ runs:
     shell: ${{ runner.os == 'Windows' && 'msys2 {0}' || 'bash' }}
     working-directory: ${{ inputs.path }}/deps/src/dovi_tool
     if: ${{ inputs.dovi-hdr10plus != 'false' }}
-  - run: cd dolby_vision && RUSTFLAGS="-Ctarget-cpu=x86-64-v3 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(cygpath -m -a ../../../install)"
+  - run: cd dolby_vision && RUSTFLAGS="-Ctarget-cpu=x86-64-v2 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(cygpath -m -a ../../../install)"
     shell: msys2 {0}
     working-directory: ${{ inputs.path }}/deps/src/dovi_tool
     if: ${{ runner.os == 'Windows' && runner.arch == 'X64' && inputs.dovi-hdr10plus != 'false' }}
@@ -242,7 +242,7 @@ runs:
     shell: ${{ runner.os == 'Windows' && 'msys2 {0}' || 'bash' }}
     working-directory: ${{ inputs.path }}/deps/src/hdr10plus_tool
     if: ${{ inputs.dovi-hdr10plus != 'false' }}
-  - run: cd hdr10plus && RUSTFLAGS="-Ctarget-cpu=x86-64-v3 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(cygpath -m -a ../../../install)"
+  - run: cd hdr10plus && RUSTFLAGS="-Ctarget-cpu=x86-64-v2 -Copt-level=3" cargo cinstall --verbose --release --library-type staticlib --prefix "$(cygpath -m -a ../../../install)"
     shell: msys2 {0}
     working-directory: ${{ inputs.path }}/deps/src/hdr10plus_tool
     if: ${{ runner.os == 'Windows' && runner.arch == 'X64' && inputs.dovi-hdr10plus != 'false' }}
@@ -281,7 +281,7 @@ runs:
     working-directory: ${{ inputs.path }}/deps/src
     if: ${{ runner.os == 'Windows' && inputs.ffms2 != 'false' }}
     env:
-      ARCH_CFLAGS: ${{ runner.arch == 'ARM64' && '-march=armv8.7-a+crypto+sm4+sha3+fp16+sve+sve2 -mtune=oryon-1' || '-march=x86-64-v3 -mtune=znver2' }}
+      ARCH_CFLAGS: ${{ runner.arch == 'ARM64' && '-march=armv8.7-a+crypto+sm4+sha3+fp16+sve+sve2 -mtune=oryon-1' || '-march=x86-64-v2 -mtune=generic' }}
     run: |
       export CC="clang"
       export CXX="clang++"
