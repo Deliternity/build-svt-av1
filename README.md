@@ -1,13 +1,16 @@
-# Akatmks/build-svt-av1@v1
+# Akatmks/build-svt-av1@v2
 
-This is a GitHub Action to build SVT-AV1 for Windows x86-64 & arm64, Linux x86-64, and macOS arm64 & x86-64.  
+This is a GitHub Action to build SVT-AV1 for Windows x86-64 & arm64, Linux x86-64, and macOS arm64.  
 By utilising the best compiler and best procedure, including LTO and PGO, this building script creates highly optimised builds within 2% of the best possible build.  
 
-SVT-AV1 variants and build repositories using this action or currently in the process of implementing this action:  
+SVT-AV1 variants and build repositories using this action:  
 – [5fish/SVT-AV1](https://github.com/5fish/SVT-AV1)  
 – [SVT-AV1-HDR](https://github.com/juliobbv-p/svt-av1-hdr)  
 – [SVT-AV1-Tritium](https://github.com/Uranite/svt-av1-tritium)  
 – [Akatmks/SVT-AV1-Builds](https://github.com/Akatmks/SVT-AV1-Builds)  
+
+Tools based on libSvtAv1 using this action:  
+– [Akatmks/vapoursynth-cdef](https://github.com/Akatmks/vapoursynth-cdef)  
 
 ## Usage
 
@@ -90,7 +93,6 @@ BuildAction/[ARCH]/[STATIC]/[FFMS2/][FILENAME]
   * On Windows x86-64 and Linux x86-64, `icelake-server+znver5`, `znver2`, or `x86-64-v3+znver2`. Both `icelake-server+znver5` and `znver2` version can be missing depending on the specific GitHub Action runner.  
   * On Windows arm64, `armv8.7-a+crypto+sm4+sha3+fp16+sve+sve2+oryon-1`.  
   * On macOS arm64, `armv8.5-a+simd+crypto+apple-m3`.  
-  * On macOS x86-64, `skylake`.  
 * `[STATIC]`: `static` or `shared`. 
 * `[FFMS2/]`:
   * When `ffms2` is set to `"false"`, the binaries sit in the `[STATIC]` folder.
@@ -116,7 +118,7 @@ A new main version (such as `Akatmks/build-svt-av1@v1` → `Akatmks/build-svt-av
 * We change the `-march` and `-mtune` in any of the builds, either due to new clang versions having different preference, or due to [GitHub-hosted runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories) upgrading to a different hardware.  
   In this case the output binary path explained in the [Results](#results) section will be changed. Please follow the list of items below to update.  
 
-Here is a complete list of items to update when upgrading `Akatmks/build-svt-av1`: (currently empty because we're on `v1`)  
+A complete list of things to update is available in the release notes. If you use Dependabot or similar tools, make sure you check the release notes section and update accordingly.  
 
 ## Contribution
 
